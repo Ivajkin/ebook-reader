@@ -63,7 +63,7 @@ didReceiveNotificationResponse:(UNNotificationResponse *)response
   InitializeFlipper(application);
 #endif
   
-  [GMSServices provideAPIKey:@"AIzaSyCphB_hC6Wbz4LyzccySaFsddEIUPcCxp0"];
+  [GMSServices provideAPIKey:@"AIzaSyCphB_...UPcCxp0"];
   NSURL *jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index.js" fallbackResource:nil];
 
     RCTBridge *bridge = [[RCTBridge alloc] initWithBundleURL:jsCodeLocation
