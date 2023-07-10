@@ -1,0 +1,16 @@
+import * as React from 'react';
+import Svg, { Path } from 'react-native-svg';
+
+function TechCheckIcon(props) {
+  return (
+    <Svg width="16" height="11" viewBox="0 0 16 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <Path d="M15.9998 2.1066L14.585 2.09497V10.254H15.9998V2.1066Z" fill="#FF3B30" />
+      <Path
+        d="M12.517 4.00746L10.8195 2.08933H8.64419V0.94325H10.9014V0H5.44375V0.94325H7.70094V2.08933H5.43642L4.32593 3.38991H2.09596V5.62064H0.94325V3.73146H0V8.5255H0.94325V6.56389H2.09596V8.92302H4.32873L5.46783 10.1287L10.819 10.1255L12.5317 8.22313H13.6418V4.00743H12.517V4.00746ZM8.69638 8.42765H7.75313V7.37398H8.69638V8.42765ZM8.69638 6.4967H7.75313V3.63362H8.69638V6.4967Z"
+        fill="#FF3B30"
+      />
+    </Svg>
+  );
+}
+
+export default TechCheckIcon;

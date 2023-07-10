@@ -1,0 +1,56 @@
+require_relative '../node_modules/react-native/scripts/react_native_pods'
+require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
+
+platform :ios, '10.0'
+
+target 'DSSCommunity' do
+  config = use_native_modules!
+
+  use_react_native!(
+    :path => config[:reactNativePath],
+    # to enable hermes on iOS, change `false` to `true` and then install pods
+    :hermes_enabled => false
+  )
+  pod 'GoogleMaps'
+  pod 'Google-Maps-iOS-Utils'
+  pod 'React-RCTText', :path => '../node_modules/react-native/Libraries/Text', :modular_headers => true
+
+  target 'DSSCommunityTests' do
+
+    inherit! :complete
+    # Pods for testing
+  end
+
+  # Enables Flipper.
+  #
+  # Note that if you have use_frameworks! enabled, Flipper will not work and
+  # you should disable the next line.
+
+  #use_flipper!()
+  #use_flipper!('Flipper' => '0.75.1', 'Flipper-Folly' => '2.5.3', 'Flipper-RSocket' => '1.3.1')
+  use_flipper!({ ‘Flipper’ => ‘0.95.0’, ‘Flipper-Folly’ => ‘2.6.7’, ‘Flipper-RSocket’ => ‘1.4.3’, ‘Flipper-DoubleConversion’ => ‘3.1.7’, ‘Flipper-Glog’ => ‘0.3.9’, ‘Flipper-PeerTalk’ => ‘0.0.4’ })
+
+  # post_install do |installer|
+  #   react_native_post_install(installer)
+  #   installer.pods_project.targets.each do |target|
+  #   target.build_configurations.each do |config|
+  #     config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '14.5'
+  #   end
+  # end
+  #end
+  post_install do |installer|
+    installer.pods_project.targets.each do |target|
+        target.build_configurations.each do |config|
+            config.build_settings['OTHER_CPLUSPLUSFLAGS'] = ''
+            config.build_settings["EXCLUDED_ARCHS[sdk=iphonesimulator*]"] = "arm64"
+        end
+    end
+ end
+#   post_install do |installer|
+#     react_native_post_install(installer)
+#     installer.pods_project.build_configurations.each do |config|
+#       config.build_settings["EXCLUDED_ARCHS[sdk=iphonesimulator*]"] = "arm64"
+#     end
+#   end
+  
+end
